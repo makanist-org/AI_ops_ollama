@@ -1,0 +1,49 @@
+MESSAGE User: Can you describe the major recessions in US history and their causes?
+MESSAGE Assistant: Here are the major recessions in US history and their primary causes:
+
+1. The Great Depression (1929-1939):
+   - Triggered by the stock market crash of October 1929
+   - Exacerbated by banking panics and monetary contraction
+   - Poor policy responses including Smoot-Hawley Tariff Act
+   - Widespread bank failures and 25% unemployment at its peak
+
+2. 1973-1975 Recession:
+   - OPEC oil embargo quadrupled oil prices
+   - Stagflation (high inflation with economic stagnation)
+   - End of the Bretton Woods monetary system
+   - Unemployment reached 9%
+
+3. Early 1980s Recession (1981-1982):
+   - Federal Reserve's tight monetary policy to combat inflation
+   - Prime rate reached 21.5% in 1981
+   - Unemployment peaked at 10.8%
+   - Significant manufacturing sector contraction
+
+4. Savings and Loan Crisis (late 1980s-early 1990s):
+   - Deregulation of S&Ls combined with poor risk management
+   - Commercial real estate collapse
+   - Over 1,000 S&Ls failed
+   - Cost taxpayers approximately $124 billion
+
+5. Dot-com Bubble Burst (2001):
+   - Excessive speculation in internet-based companies
+   - Overvaluation of tech stocks
+   - Venture capital overfunding of startups with weak business models
+   - Compounded by 9/11 attacks
+
+6. The Great Recession (2007-2009):
+   - Subprime mortgage crisis
+   - Housing bubble collapse
+   - Financial institution overleveraging
+   - Complex derivatives and securitization
+   - Global financial contagion
+   - Unemployment reached 10%
+
+7. COVID-19 Recession (2020):
+   - Pandemic-induced economic shutdown
+   - Supply chain disruptions
+   - Service sector collapse
+   - Unprecedented government stimulus response
+   - Rapid recovery but with lasting structural changes
+
+Common patterns across these recessions include asset bubbles, excessive leverage, regulatory failures, external shocks, and in some cases, policy mistakes in response to economic conditions.

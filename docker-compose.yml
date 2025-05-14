@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  ollama:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ollama-recession-trainer
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+      - /var/run/docker.sock:/var/run/docker.sock  # Allow Docker-in-Docker for image building
+    env_file:
+      - .env
+    # GPU configuration is commented out - uncomment if you have NVIDIA GPU with proper drivers
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+volumes:
+  ollama-data:

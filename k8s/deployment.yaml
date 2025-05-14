@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recession-analyst-model
+  labels:
+    app: recession-analyst
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recession-analyst
+  template:
+    metadata:
+      labels:
+        app: recession-analyst
+    spec:
+      containers:
+      - name: ollama
+        image: makanist/custom_model_recession_analysis_ollama3lb:latest
+        ports:
+        - containerPort: 11434
+        resources:
+          requests:
+            memory: "4Gi"
+            cpu: "2"
+          # Uncomment if you have GPU support in your cluster
+          # limits:
+          #   nvidia.com/gpu: 1
+        env:
+        - name: OLLAMA_HOST
+          value: "0.0.0.0"
+        - name: OLLAMA_CPU_ONLY
+          value: "1"  # Comment this out if using GPU
+        volumeMounts:
+        - name: ollama-data
+          mountPath: /root/.ollama
+      volumes:
+      - name: ollama-data
+        persistentVolumeClaim:
+          claimName: ollama-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recession-analyst-service
+spec:
+  selector:
+    app: recession-analyst
+  ports:
+  - port: 11434
+    targetPort: 11434
+  type: ClusterIP
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ollama-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: recession-analyst-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: recession-analyst-service
+            port:
+              number: 11434
