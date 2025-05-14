@@ -1,0 +1,21 @@
+# Environment variables
+.env
+
+# Ollama data
+ollama-data/
+
+# Docker volumes
+volumes/
+
+# Logs
+*.log
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo

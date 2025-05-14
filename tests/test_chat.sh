@@ -7,7 +7,7 @@ curl -s -X POST http://localhost:11435/api/chat -d '{
   "messages": [
     {
       "role": "user",
-      "content": "How do recessions impact the job market?"
+      "content": "What are the years receision hit previously? just gie me year eg 2008. "
     }
   ],
   "stream": false
