@@ -50,12 +50,30 @@ RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 # Expose Ollama API port
 EXPOSE 11434
 
-# Set environment variables
-ENV OLLAMA_HOST=0.0.0.0
+# Create a startup script
+COPY <<'SCRIPT' /start.sh
+#!/bin/bash
+ollama serve &
+sleep 5
+ollama create ${MODEL_NAME} -f /app/Modelfile
+tail -f /dev/null
+SCRIPT
 
-# Create and serve the model on startup
-CMD ollama serve & sleep 5 && ollama create ${MODEL_NAME} -f /app/Modelfile && tail -f /dev/null
+RUN chmod +x /start.sh
+
+# Use the startup script as the entrypoint
+ENTRYPOINT ["/start.sh"]
 EOF
+
+# Create the startup script
+cat > /tmp/model_export/start.sh << EOF
+#!/bin/bash
+ollama serve &
+sleep 5
+ollama create ${MODEL_NAME} -f /app/Modelfile
+tail -f /dev/null
+EOF
+chmod +x /tmp/model_export/start.sh
 
 # Build the Docker image
 echo "Building Docker image: ${DOCKER_HUB_USERNAME}/${IMAGE_NAME}:${VERSION}"
